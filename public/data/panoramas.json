@@ -1,3 +1,4 @@
+
 [
   {
     "id": "sample",
@@ -5,7 +6,7 @@
     "location": "LCD Pano Sanal Stüdyo",
     "description": "Bu örnek sahne, kendi panoramalarınızı nasıl yöneteceğinizi göstermek için oluşturuldu.",
     "tags": ["demo", "örnek"],
-    "image": "../assets/sample-panorama.svg",
+    "image": "assets/sample-panorama.svg",
     "createdAt": "2024-01-12T12:00:00.000Z"
   }
 ]
