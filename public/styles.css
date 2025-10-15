@@ -1,0 +1,413 @@
+:root {
+  color-scheme: light dark;
+  --surface: #0f172a;
+  --surface-alt: #111827;
+  --border: rgba(148, 163, 184, 0.25);
+  --text: #f8fafc;
+  --text-muted: #cbd5f5;
+  --accent: #38bdf8;
+  --accent-strong: #0ea5e9;
+  --danger: #f87171;
+  --radius: 18px;
+  --shadow: 0 24px 48px rgba(15, 23, 42, 0.2);
+  --sidebar-width: 280px;
+  --panel-gap: 24px;
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #020617;
+  color: var(--text);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #1e293b 0%, #020617 60%);
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 32px;
+  backdrop-filter: blur(16px);
+  background: rgba(15, 23, 42, 0.7);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand-icon {
+  font-size: 42px;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.brand p {
+  margin: 4px 0 0;
+  color: var(--text-muted);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.header-actions button {
+  white-space: nowrap;
+}
+
+button {
+  border-radius: 999px;
+  border: 1px solid transparent;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+button.primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  box-shadow: 0 12px 24px rgba(14, 165, 233, 0.25);
+}
+
+button.primary:hover {
+  transform: translateY(-1px);
+}
+
+button.secondary {
+  background: transparent;
+  border-color: var(--border);
+}
+
+button.secondary:hover {
+  background: rgba(148, 163, 184, 0.1);
+}
+
+button.ghost {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background: rgba(148, 163, 184, 0.1);
+  border-color: transparent;
+  font-size: 1.4rem;
+  line-height: 1;
+  padding: 0;
+}
+
+button.ghost:hover {
+  background: rgba(56, 189, 248, 0.2);
+}
+
+button.danger {
+  background: transparent;
+  border-color: rgba(248, 113, 113, 0.6);
+  color: #fca5a5;
+}
+
+button.danger:hover {
+  background: rgba(248, 113, 113, 0.12);
+}
+
+.app-body {
+  flex: 1;
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  gap: var(--panel-gap);
+  padding: 24px;
+}
+
+.scene-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  background: rgba(15, 23, 42, 0.75);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.scene-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.scene-item {
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid transparent;
+  background: rgba(30, 41, 59, 0.6);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease, border 0.2s ease;
+}
+
+.scene-item:hover {
+  transform: translateY(-1px);
+  background: rgba(56, 189, 248, 0.12);
+}
+
+.scene-item.active {
+  border-color: rgba(56, 189, 248, 0.7);
+  background: rgba(56, 189, 248, 0.18);
+  box-shadow: 0 12px 24px rgba(56, 189, 248, 0.12);
+}
+
+.scene-item h3 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.scene-item p {
+  margin: 4px 0 0;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.viewer-area {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--panel-gap);
+}
+
+.viewer-panel,
+.scene-details {
+  background: rgba(15, 23, 42, 0.75);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.viewer-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.control {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.viewer-panel input[type="range"] {
+  width: 160px;
+}
+
+.panorama-viewer {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  min-height: 420px;
+  border-radius: calc(var(--radius) - 8px);
+  overflow: hidden;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  background-color: #000;
+  background-size: var(--zoom, 100%) 120%;
+  background-repeat: repeat-x;
+  background-position: var(--yaw, 50%) var(--pitch, 50%);
+  cursor: grab;
+}
+
+.panorama-viewer:not(.has-image) {
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.92), rgba(30, 41, 59, 0.92));
+  border-color: rgba(148, 163, 184, 0.25);
+}
+
+.panorama-viewer:active {
+  cursor: grabbing;
+}
+
+.panorama-viewer .empty-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.4;
+  max-width: 80%;
+  font-size: 0.95rem;
+}
+
+.viewer-hint {
+  margin: 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.scene-details h2 {
+  margin: 0 0 8px;
+}
+
+.scene-details form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.scene-details label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.scene-details input,
+.scene-details textarea {
+  background: rgba(15, 23, 42, 0.4);
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  padding: 12px 14px;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.scene-details input:focus,
+.scene-details textarea:focus {
+  outline: none;
+  border-color: rgba(56, 189, 248, 0.8);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-footer {
+  margin-top: auto;
+  padding: 24px 32px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.status-message {
+  margin-top: 8px;
+  min-height: 1.2em;
+  color: var(--text-muted);
+  transition: color 0.2s ease;
+}
+
+.status-message[data-tone="success"] {
+  color: #34d399;
+}
+
+.status-message[data-tone="error"] {
+  color: var(--danger);
+}
+
+#sceneDialog {
+  border: none;
+  border-radius: 18px;
+  padding: 24px;
+  background: rgba(15, 23, 42, 0.95);
+  color: var(--text);
+  box-shadow: var(--shadow);
+  max-width: 420px;
+}
+
+#sceneDialog form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+#sceneDialog label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+#sceneDialog input,
+#sceneDialog textarea {
+  background: rgba(15, 23, 42, 0.4);
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  padding: 10px 12px;
+}
+
+#sceneDialog menu {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin: 0;
+}
+
+@media (max-width: 1200px) {
+  :root {
+    --sidebar-width: 240px;
+    --panel-gap: 16px;
+  }
+
+  .viewer-area {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .app-body {
+    grid-template-columns: 1fr;
+  }
+
+  .scene-sidebar {
+    order: 2;
+  }
+
+  .viewer-area {
+    order: 1;
+  }
+
+  .app-header,
+  .app-footer {
+    padding: 16px 20px;
+  }
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LCD Pano Yerel Yönetim Aracı</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="app-header">
+        <div class="brand">
+          <span class="brand-icon" aria-hidden="true">📸</span>
+          <div>
+            <h1>LCD Pano</h1>
+            <p>Yerel panorama yönetim aracı</p>
+          </div>
+        </div>
+        <div class="header-actions">
+          <button id="importPanorama" class="primary">Panorama Yükle</button>
+          <input id="panoramaFile" type="file" accept="image/*" hidden />
+          <button id="importConfig" class="secondary">Yapılandırmayı İçe Aktar</button>
+          <input id="configFile" type="file" accept="application/json,.json,.txt,application/gzip,.gz" hidden />
+          <button id="exportConfig" class="secondary">Yapılandırmayı Dışa Aktar</button>
+        </div>
+      </header>
+      <div class="app-body">
+        <aside class="scene-sidebar" aria-label="Sahneler">
+          <div class="sidebar-header">
+            <h2>Sahneler</h2>
+            <button id="addScene" class="ghost" title="Yeni sahne oluştur">＋</button>
+          </div>
+          <div id="sceneList" class="scene-list" role="list"></div>
+        </aside>
+        <main class="viewer-area">
+          <section class="viewer-panel" aria-live="polite">
+            <div class="viewer-toolbar">
+              <label class="control">
+                Yakınlaştırma
+                <input id="zoomControl" type="range" min="40" max="160" value="100" />
+              </label>
+              <label class="control">
+                Yatay Hassasiyet
+                <input id="sensitivityControl" type="range" min="1" max="10" value="4" />
+              </label>
+            </div>
+            <div id="viewer" class="panorama-viewer" tabindex="0" role="img" aria-label="Panorama görüntüleyici"></div>
+            <p class="viewer-hint">
+              Görünümü döndürmek için fareyle sürükleyin veya dokunun. Kaydırma tekerleği ile yakınlaşın.
+            </p>
+          </section>
+          <section class="scene-details" aria-live="polite">
+            <h2>Detaylar</h2>
+            <form id="sceneForm" autocomplete="off">
+              <label>
+                Başlık
+                <input name="title" required />
+              </label>
+              <label>
+                Konum
+                <input name="location" />
+              </label>
+              <label>
+                Etiketler
+                <input name="tags" placeholder="Virgülle ayırın" />
+              </label>
+              <label>
+                Açıklama
+                <textarea name="description" rows="5"></textarea>
+              </label>
+              <div class="form-actions">
+                <button type="submit" class="primary">Değişiklikleri Kaydet</button>
+                <button type="button" id="deleteScene" class="danger">Sahneyi Sil</button>
+              </div>
+            </form>
+          </section>
+        </main>
+      </div>
+      <footer class="app-footer">
+        <p>
+          Dosyalarınız yerel olarak saklanır. Yapılandırmayı dışa aktararak daha sonra tekrar içeri
+          alabilirsiniz.
+        </p>
+        <p
+          id="statusMessage"
+          class="status-message"
+          role="status"
+          aria-live="polite"
+          data-tone="info"
+        ></p>
+      </footer>
+    </div>
+    <dialog id="sceneDialog">
+      <form method="dialog">
+        <h2>Yeni Sahne Oluştur</h2>
+        <p>
+          Var olan panorama dosyanızı yükledikten sonra bu form üzerinden meta bilgileri girebilir veya
+          düzenleyebilirsiniz.
+        </p>
+        <label>
+          Başlık
+          <input id="dialogTitle" required />
+        </label>
+        <label>
+          Konum
+          <input id="dialogLocation" />
+        </label>
+        <label>
+          Etiketler
+          <input id="dialogTags" placeholder="Örn. ofis, demo" />
+        </label>
+        <label>
+          Açıklama
+          <textarea id="dialogDescription" rows="4"></textarea>
+        </label>
+        <menu>
+          <button value="cancel" class="secondary">Vazgeç</button>
+          <button id="dialogConfirm" value="default" class="primary">Oluştur</button>
+        </menu>
+      </form>
+    </dialog>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
