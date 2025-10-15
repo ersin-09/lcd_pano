@@ -24,7 +24,7 @@ saklar ve JSON olarak dışa aktarabilmenize olanak tanır.
    python -m http.server 5173
    ```
 
-3. Tarayıcıda `http://localhost:5173` adresini açın.
+3. Tarayıcıda `http://10.88.0.3:5173` adresini açın.
 4. "Panorama Yükle" ile panorama görsellerinizi seçin ve meta bilgilerini doldurun.
 5. Daha önce dışa aktardığınız bir yapılandırma varsa "Yapılandırmayı İçeri Aktar" ile geri yükleyin.
 
@@ -54,4 +54,3 @@ public/
 ## Lisans
 
 Bu proje örnek bir çalışma olup içerik serbestçe güncellenebilir.
-
